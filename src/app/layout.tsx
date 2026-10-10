@@ -18,15 +18,15 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Trivedi Marble & Handicraft — Master Sandstone & Marble Artisans Since 1949",
+  title: "Trivedi Marble & Handicraft — Shaping Stone. Carrying Forward A Legacy. Since 1937",
   description:
-    "Trivedi Marble & Handicraft are the leading Manufacturer & Supplier of Sandstone Carving, Marble Jali, Designer Marble Temples & Stone Cladding from Sirohi, Rajasthan, India. Crafting excellence since 1949.",
+    "Trivedi Marble & Handicraft (Abu Road, Rajasthan) — Natural Stone, CNC Precision & Architectural Craftsmanship. Master sculptors of the 84 Columns at Vrindavan, Shri Bhandavpur Jain Tirth, and sacred temples across India since 1937.",
   keywords:
-    "sandstone carving, marble carving, marble jali, marble temple, stone cladding, Rajasthan marble, Sirohi handicraft, CNC marble carving, marble tulsi pot",
+    "Trivedi Marble, 84 Columns Vrindavan, Bhandavpur Jain Tirth, sandstone carving, marble carving, marble temple, stone cladding, Abu Road Rajasthan, CNC marble carving work, marble tulsi pot",
   openGraph: {
-    title: "Trivedi Marble & Handicraft — Master Artisans Since 1949",
+    title: "Trivedi Marble & Handicraft — Shaping Stone Since 1937",
     description:
-      "Leading manufacturer & supplier of sandstone carving, marble jali designs, and designer marble temples from Sirohi, Rajasthan.",
+      "Natural Stone | CNC Precision | Architectural Craftsmanship from Abu Road, Rajasthan.",
     type: "website",
     locale: "en_IN",
   },

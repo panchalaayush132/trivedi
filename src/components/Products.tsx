@@ -37,7 +37,7 @@ const products: ProductItem[] = [
     category: "Sacred Temples",
     description:
       "Ornate hand-crafted marble mandirs for residences and spiritual trusts, featuring custom shikhara, sanctum, and domes.",
-    image: "/images/temple.jpg",
+    image: "/images/real/real-marble-mandir.jpg",
     features: ["Vastu Compliant", "Intricate Pillars", "Polished White Marble"],
   },
   {
@@ -46,7 +46,7 @@ const products: ProductItem[] = [
     category: "Sacred Temples",
     description:
       "Detailed stone filigree work for temple pillars, brackets, torana arches, and divine iconography carved with spiritual devotion.",
-    image: "/images/temple-carving.jpg",
+    image: "/images/real/real-carved-torana.jpg",
     features: ["High-Relief Sculpting", "Sacred Iconography", "Artisan Precision"],
   },
   {
@@ -55,7 +55,7 @@ const products: ProductItem[] = [
     category: "Jali & Lattice",
     description:
       "Perforated marble latticework panels blending geometric arabesques with traditional floral lattices for dramatic light filtering.",
-    image: "/images/hero.jpg",
+    image: "/images/real/real-jali-relief-panel.jpg",
     features: ["Custom Patterns", "Diffused Sunlight", "Heritage Lattice"],
   },
   {
@@ -64,7 +64,7 @@ const products: ProductItem[] = [
     category: "Sacred Sculptures",
     description:
       "Auspicious marble Tulsi Kyaras sculpted from solid stone with delicate leaf patterns and traditional elephant base motifs.",
-    image: "/images/tulsi-pot.jpg",
+    image: "/images/real/real-tulsi-pot.jpg",
     features: ["Solid Monolithic Stone", "Weatherproof", "Sanctified Craft"],
   },
   {
@@ -82,7 +82,7 @@ const products: ProductItem[] = [
     category: "Modern Precision",
     description:
       "High-precision 3D and 2D computer numeric control carving combining micron-level accuracy with artisan hand-finishing.",
-    image: "/images/cnc-carving.jpg",
+    image: "/images/real/real-mandapa-ceiling-dome.jpg",
     features: ["Micron Precision", "Complex 3D Reliefs", "Fast Delivery"],
   },
 ];

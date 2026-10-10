@@ -58,17 +58,38 @@ export default function Contact() {
               visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
             }`}
           >
-            {/* Contact Person Card */}
-            <div className="p-6 rounded-2xl bg-stone-50 border border-stone-200/80">
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-gold block mb-1">
-                Direct Leadership
-              </span>
-              <h3 className="font-[family-name:var(--font-display)] text-2xl font-bold text-stone-900">
-                Mr. Varun Naresh Trivedi
-              </h3>
-              <p className="text-stone-500 text-sm mt-0.5">
-                CEO & Managing Director — Trivedi Marble & Handicraft
-              </p>
+            {/* Contact Leadership Card */}
+            <div className="p-6 rounded-2xl bg-stone-50 border border-stone-200/80 space-y-3">
+              <div>
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-gold block mb-0.5">
+                  Direct Leadership & Administration
+                </span>
+                <h3 className="font-[family-name:var(--font-display)] text-xl sm:text-2xl font-bold text-stone-900">
+                  Mr. Varun Naresh Trivedi
+                </h3>
+                <p className="text-stone-500 text-xs sm:text-sm">
+                  CEO & Managing Director — Trivedi Marble & Handicraft
+                </p>
+              </div>
+
+              <div className="pt-2 border-t border-stone-200/60">
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-gold block mb-0.5">
+                  Architectural & Design Department
+                </span>
+                <h4 className="font-[family-name:var(--font-display)] text-lg font-bold text-stone-900">
+                  Ms. Madhuri Trivedi
+                </h4>
+                <p className="text-stone-500 text-xs">
+                  Head of Design & 3D Stone Profiling
+                </p>
+              </div>
+
+              <div className="pt-2 border-t border-stone-200/60 text-xs text-stone-500">
+                <span>Official Web: </span>
+                <a href="https://www.trivedimarble.com" target="_blank" rel="noopener noreferrer" className="text-gold font-semibold hover:underline">
+                  www.trivedimarble.com
+                </a>
+              </div>
             </div>
 
             {/* Direct Phone Numbers */}

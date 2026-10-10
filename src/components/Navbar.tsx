@@ -5,10 +5,11 @@ import Link from "next/link";
 
 const navLinks = [
   { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
+  { href: "#about", label: "Heritage" },
+  { href: "#manufacturing", label: "Infrastructure" },
   { href: "#products", label: "Creations" },
   { href: "#projects", label: "Landmark Projects" },
-  { href: "#process", label: "Process" },
+  { href: "#recognitions", label: "Recognitions" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -54,13 +55,13 @@ export default function Navbar() {
                 scrolled ? "text-gold" : "text-gold-light"
               }`}
             >
-              & Handicraft • Est. 1949
+              & Handicraft • Est. 1937
             </span>
           </div>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-7">
+        <nav className="hidden xl:flex items-center gap-6">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -76,7 +77,7 @@ export default function Navbar() {
           {/* Direct Phone button */}
           <a
             href="tel:+919829118822"
-            className="flex items-center gap-2 text-xs font-semibold tracking-wide text-stone-700 hover:text-gold transition-colors"
+            className="flex items-center gap-2 text-xs font-semibold tracking-wide text-stone-700 hover:text-gold transition-colors ml-2"
           >
             <span className={`w-2 h-2 rounded-full ${scrolled ? "bg-emerald-600" : "bg-emerald-400"} animate-pulse`} />
             <span className={scrolled ? "text-stone-800" : "text-white"}>
@@ -86,14 +87,14 @@ export default function Navbar() {
 
           <a
             href="#contact"
-            className="px-5 py-2.5 bg-stone-900 text-gold-light text-xs font-semibold uppercase tracking-wider rounded-lg hover:bg-stone-800 transition-all duration-200 shadow-sm hover:shadow-md"
+            className="px-5 py-2.5 bg-stone-900 text-gold-light text-xs font-semibold uppercase tracking-wider rounded-lg hover:bg-stone-800 transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer"
           >
             Inquire Now
           </a>
         </nav>
 
-        {/* Mobile menu button */}
-        <div className="flex items-center gap-3 lg:hidden">
+        {/* Medium Screen & Mobile Nav Actions */}
+        <div className="flex items-center gap-3 xl:hidden">
           <a
             href="tel:+919829118822"
             className={`text-xs font-bold px-3 py-1.5 rounded-lg border ${
@@ -102,7 +103,7 @@ export default function Navbar() {
                 : "border-white/30 text-white"
             }`}
           >
-            Call Now
+            Call Artisan
           </a>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -142,7 +143,7 @@ export default function Navbar() {
 
       {/* Mobile Nav Drawer */}
       {mobileOpen && (
-        <div className="lg:hidden animate-slide-down bg-white border-t border-stone-200 shadow-xl">
+        <div className="xl:hidden animate-slide-down bg-white border-t border-stone-200 shadow-xl">
           <nav className="flex flex-col px-6 py-5 gap-1 text-sm">
             {navLinks.map((link) => (
               <a

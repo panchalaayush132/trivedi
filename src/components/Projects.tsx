@@ -5,36 +5,54 @@ import { useEffect, useRef, useState } from "react";
 
 interface Project {
   title: string;
-  category: string;
+  category: "Temples & Tirths" | "State & Public Landmarks" | "Bespoke Residences" | "Sacred Installations";
   location: string;
   description: string;
   highlights: string[];
   image: string;
   scope: string;
+  honorBadge?: string;
 }
 
 const landmarkProjects: Project[] = [
   {
+    title: "84 Columns — Vrindavan",
+    category: "State & Public Landmarks",
+    location: "Vrindavan, Uttar Pradesh",
+    description:
+      "Manufacturing and detailed stonework for 84 monumental architectural sandstone columns along the sacred Vrindavan corridor. Featuring hand-sculpted Kamdhenu sacred cow capitals, Raadhe Raadhe calligraphy, and illuminated heritage colonnades inspected and inaugurated with state honors by UP Chief Minister Yogi Adityanath.",
+    highlights: [
+      "84 Monumental Sandstone Columns",
+      "Hand-Sculpted Kamdhenu Cow Capitals",
+      "Traditional Raadhe Calligraphy Engravings",
+      "Inaugurated by UP CM Yogi Adityanath",
+    ],
+    image: "/images/real/vrindavan-columns-lit.jpg",
+    scope: "84 Sandstone Columns & Sculptures",
+    honorBadge: "State Honor Inauguration",
+  },
+  {
     title: "Shri Bhandavpur Jain Tirth",
-    category: "Sacred Jain Tirth & Heritage Architecture",
+    category: "Temples & Tirths",
     location: "Bhandavpur, Rajasthan",
     description:
-      "Monumental white marble temple mandapa complex featuring classical Shikhara carving, hand-sculpted pillars, and sacred sanctum stonework honoring centuries of Jain sacred art.",
+      "Specialised stonework and intricate architectural detailing for the renowned Jain Pilgrimage Complex. Crafted from Makrana pure white marble with classical Shikhara carvings, mandapa pillars, and celestial iconography honoring centuries of sacred Jain art.",
     highlights: [
       "Makrana Pure White Marble",
       "Hand-Carved Mandapa Pillars",
       "Ornate Shikhara & Torana Archways",
-      "Heritage Jain Architectural Precision",
+      "Sanman Patra Awarded by Temple Trust",
     ],
     image: "/images/bhandavpur-tirth.jpg",
     scope: "Sanctum Architecture & Stone Filigree",
+    honorBadge: "Trust Sanman Patra Awarded",
   },
   {
     title: "Shri Narendra Bhai Modi House",
-    category: "Distinguished Architectural Stonework",
+    category: "Bespoke Residences",
     location: "Gujarat, India",
     description:
-      "Exquisite custom sandstone facade and architectural stone carvings for this prestigious residence. Incorporates hand-sculpted jali panels, royal colonnades, and understated Indian heritage motifs.",
+      "Exquisite custom sandstone facade and architectural stonework for this prestigious residence. Incorporates hand-sculpted perforated jali panels, royal colonnades, and understated Indian heritage motifs with refined minimalist precision.",
     highlights: [
       "Premium Carved Rajasthani Sandstone",
       "Custom Perforated Jali Screens",
@@ -43,13 +61,14 @@ const landmarkProjects: Project[] = [
     ],
     image: "/images/modi-house.jpg",
     scope: "Facade Cladding, Jali & Stone Pillars",
+    honorBadge: "Prestigious Commission",
   },
   {
     title: "Tharad Mota Derasar",
-    category: "Historic Jain Temple Marble Carving",
+    category: "Temples & Tirths",
     location: "Tharad, Gujarat",
     description:
-      "Comprehensive stone carving and temple preservation for the revered Mota Derasar. Features intricate celestial apsara carvings, vaulted marble domes, and divine fluted columns.",
+      "Comprehensive stone carving and sacred temple preservation for the revered Mota Derasar. Features intricate celestial apsara carvings, vaulted marble domes, and divine fluted columns in pure Makrana marble.",
     highlights: [
       "Pure Marble Carved Vaulted Domes",
       "Hand-Chiseled Celestial Apsara Reliefs",
@@ -58,13 +77,68 @@ const landmarkProjects: Project[] = [
     ],
     image: "/images/tharad-derasar.jpg",
     scope: "Interior Sanctum & Pillar Sculptures",
+    honorBadge: "Heritage Derasar Restoration",
+  },
+  {
+    title: "Omkareshwar Lotus Installation",
+    category: "Sacred Installations",
+    location: "Omkareshwar, Madhya Pradesh",
+    description:
+      "Precision-crafted monumental stone components for the distinctive sacred Lotus Installation at Omkareshwar. Giant sculpted white stone lotus petals carved with micron precision and assembled to support holy pilgrimage iconography.",
+    highlights: [
+      "Monumental Sacred Lotus Petals",
+      "Precision CNC Profiling & Hand Polish",
+      "High-Load Structural Stone Engineering",
+      "Pilgrimage Site Centerpiece",
+    ],
+    image: "/images/real/project-omkareshwar-lotus.jpg",
+    scope: "Precision-Crafted Lotus Components",
+    honorBadge: "Landmark Holy Installation",
+  },
+  {
+    title: "Jamea — Saki Naka, Mumbai",
+    category: "Bespoke Residences",
+    location: "Mumbai, Maharashtra",
+    description:
+      "Custom architectural stonework and grand facade elements executed for the prestigious Jamea Project in Mumbai. Blending contemporary architectural grandeur with bespoke textured natural stone cladding and arches.",
+    highlights: [
+      "Grand Architectural Arched Windows",
+      "Custom Exterior Stone Cladding",
+      "Bespoke Fluted Stone Pilasters",
+      "Precision Engineered Weatherproof Joints",
+    ],
+    image: "/images/real/project-jamea-mumbai.jpg",
+    scope: "Facade Architecture & Stonework",
+  },
+  {
+    title: "Sidhpur Gate & Karban Mataji Mandir",
+    category: "Temples & Tirths",
+    location: "Sidhpur & Rajasthan",
+    description:
+      "Custom-designed and precision-crafted stone entrance gates showcasing detailed architectural craftsmanship, carved toranas, and complete sanctum stonework for the Karban Mataji Mandir project.",
+    highlights: [
+      "Classical Carved Torana Gateways",
+      "High-Relief Elephant & Kalash Pillars",
+      "Weather-Resistant Rajasthani Sandstone",
+      "Traditional Indian Gate Architecture",
+    ],
+    image: "/images/real/project-sidhpur-gate.jpg",
+    scope: "Monumental Gateways & Sanctum",
   },
 ];
 
 export default function Projects() {
   const [visible, setVisible] = useState(false);
+  const [activeFilter, setActiveFilter] = useState<string>("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const ref = useRef<HTMLDivElement>(null);
+
+  const categories = ["All", "State & Public Landmarks", "Temples & Tirths", "Bespoke Residences", "Sacred Installations"];
+
+  const filteredProjects =
+    activeFilter === "All"
+      ? landmarkProjects
+      : landmarkProjects.filter((p) => p.category === activeFilter);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -100,35 +174,51 @@ export default function Projects() {
       ref={ref}
       className="py-24 md:py-32 bg-stone-50 relative overflow-hidden"
     >
-      {/* Subtle architectural background texture */}
       <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-gold/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-10 w-[400px] h-[400px] bg-stone-200/40 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div
-          className={`text-center mb-16 md:mb-20 transition-all duration-700 ${
+          className={`text-center mb-12 md:mb-16 transition-all duration-700 ${
             visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
           <span className="text-gold text-xs md:text-sm font-semibold uppercase tracking-[0.25em]">
-            Landmark Commissions
+            Crafted For Landmarks. Created For Details.
           </span>
           <h2 className="font-[family-name:var(--font-display)] text-3xl md:text-5xl lg:text-6xl font-bold text-stone-900 mt-3 mb-4 tracking-tight">
-            Our Renowned Projects
+            Our Landmark Projects
           </h2>
           <p className="text-stone-600 max-w-2xl mx-auto text-base md:text-lg font-light leading-relaxed">
-            Honored to sculpt sacred tirths, grand temples, and prestigious residences
-            with uncompromised precision and generational craftsmanship.
+            Honored to manufacture and carve sacred pilgrimage tirths, state monuments, and prestigious
+            architectural residences with uncompromised precision and generational craftsmanship.
           </p>
           <div className="ornament-divider max-w-xs mx-auto mt-6">
             <span className="text-gold text-lg">◆</span>
           </div>
+
+          {/* Minimalist Filter Tabs */}
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-8">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveFilter(cat)}
+                className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+                  activeFilter === cat
+                    ? "bg-stone-900 text-gold-light shadow-md"
+                    : "bg-white text-stone-600 hover:text-stone-900 hover:bg-stone-200/70 border border-stone-200"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Projects Cards Grid */}
-        <div className="grid lg:grid-cols-3 gap-8 items-stretch">
-          {landmarkProjects.map((project, i) => (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+          {filteredProjects.map((project, i) => (
             <div
               key={project.title}
               className={`group flex flex-col rounded-2xl bg-white border border-stone-200/90 hover:border-gold/40 shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden ${
@@ -137,29 +227,34 @@ export default function Projects() {
                   : "opacity-0 translate-y-12"
               }`}
               style={{
-                transitionDelay: visible ? `${i * 150 + 150}ms` : "0ms",
+                transitionDelay: visible ? `${(i % 3) * 120 + 100}ms` : "0ms",
               }}
             >
               {/* Project Image */}
-              <div className="relative h-72 md:h-80 w-full overflow-hidden bg-stone-100">
+              <div className="relative h-64 md:h-72 w-full overflow-hidden bg-stone-100">
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
-                  sizes="(max-width: 1024px) 100vw, 33vw"
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-106"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-950/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-stone-950/20 to-transparent" />
 
                 {/* Scope pill */}
-                <div className="absolute top-4 left-4">
-                  <span className="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white bg-stone-900/80 backdrop-blur-md rounded-full border border-white/10">
+                <div className="absolute top-3.5 left-3.5 flex flex-col gap-1.5 items-start">
+                  <span className="inline-block px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white bg-stone-900/85 backdrop-blur-md rounded-full border border-white/10">
                     {project.scope}
                   </span>
+                  {project.honorBadge && (
+                    <span className="inline-block px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-stone-950 bg-gold-light/95 backdrop-blur-md rounded-full shadow-sm">
+                      ★ {project.honorBadge}
+                    </span>
+                  )}
                 </div>
 
                 {/* Location indicator */}
-                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white text-xs">
+                <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white text-xs">
                   <span className="flex items-center gap-1.5 font-medium tracking-wide">
                     <svg
                       className="w-4 h-4 text-gold-light"
@@ -185,21 +280,21 @@ export default function Projects() {
               </div>
 
               {/* Card Body */}
-              <div className="p-7 flex flex-col flex-grow justify-between">
+              <div className="p-6 flex flex-col flex-grow justify-between">
                 <div>
-                  <span className="text-gold text-xs font-semibold uppercase tracking-wider block mb-2">
+                  <span className="text-gold text-[11px] font-semibold uppercase tracking-wider block mb-1.5">
                     {project.category}
                   </span>
-                  <h3 className="font-[family-name:var(--font-display)] text-2xl font-bold text-stone-900 group-hover:text-stone-800 transition-colors">
+                  <h3 className="font-[family-name:var(--font-display)] text-2xl font-bold text-stone-900 group-hover:text-gold transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-stone-600 text-sm leading-relaxed mt-3 mb-6">
+                  <p className="text-stone-600 text-xs sm:text-sm leading-relaxed mt-2.5 mb-5 line-clamp-3">
                     {project.description}
                   </p>
 
                   {/* Highlights */}
-                  <div className="space-y-2 pt-4 border-t border-stone-100 mb-6">
-                    {project.highlights.map((h) => (
+                  <div className="space-y-1.5 pt-3 border-t border-stone-100 mb-5">
+                    {project.highlights.slice(0, 3).map((h) => (
                       <div
                         key={h}
                         className="flex items-start gap-2 text-xs text-stone-600 font-medium"
@@ -211,7 +306,7 @@ export default function Projects() {
                   </div>
                 </div>
 
-                {/* Footer action */}
+                {/* Action button */}
                 <div className="pt-2">
                   <button
                     onClick={() => setSelectedProject(project)}
@@ -246,13 +341,13 @@ export default function Projects() {
         >
           <div>
             <span className="text-gold-light text-xs uppercase tracking-widest font-semibold block mb-1">
-              Have a Temple or Architectural Commission?
+              Have a Landmark Temple or Architectural Commission?
             </span>
             <h4 className="font-[family-name:var(--font-display)] text-2xl md:text-3xl font-bold text-white">
-              Consult with Master Craftsman Mr. Varun Trivedi
+              Consult Directly with Mr. Varun Naresh Trivedi
             </h4>
             <p className="text-stone-300 text-sm mt-1 max-w-xl">
-              From conception and structural stone selection to intricate hand carving and pan-India installation.
+              From CAD design and quarry stone selection to high-precision CNC profiling and pan-India installation.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3 shrink-0">
@@ -285,7 +380,7 @@ export default function Projects() {
             className="bg-white rounded-2xl max-w-3xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-stone-200 overflow-hidden my-auto animate-scale-in"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal Image Header (compact & proportional so text is immediately visible) */}
+            {/* Modal Image Header */}
             <div className="relative h-48 sm:h-56 md:h-64 w-full shrink-0 bg-stone-100">
               <Image
                 src={selectedProject.image}
@@ -296,7 +391,6 @@ export default function Projects() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-stone-950/70 via-transparent to-transparent" />
 
-              {/* Close Button - Sticky & High Contrast */}
               <button
                 onClick={() => setSelectedProject(null)}
                 aria-label="Close modal"
@@ -305,9 +399,9 @@ export default function Projects() {
                 ✕
               </button>
 
-              <div className="absolute bottom-3 left-4 flex items-center gap-2">
+              <div className="absolute bottom-3 left-4 flex flex-wrap items-center gap-2">
                 <span className="px-2.5 py-1 bg-stone-900/80 backdrop-blur-md rounded-md text-white text-xs font-medium">
-                  📍 {selectedProject.location}
+                  📍 {projectLocationClean(selectedProject.location)}
                 </span>
                 <span className="px-2.5 py-1 bg-gold/90 backdrop-blur-md rounded-md text-stone-950 text-xs font-bold">
                   {selectedProject.scope}
@@ -349,11 +443,11 @@ export default function Projects() {
               </div>
             </div>
 
-            {/* Modal Sticky Footer - Always Visible & Never Cut Off */}
+            {/* Modal Sticky Footer */}
             <div className="p-4 sm:p-5 bg-stone-50 border-t border-stone-200 flex flex-wrap items-center justify-between gap-3 shrink-0">
               <div className="text-xs text-stone-500">
-                Crafted by <strong className="text-stone-800">Trivedi Marble & Handicraft</strong>
-                <span className="hidden sm:inline text-stone-400"> (Sirohi, Raj.)</span>
+                Executed by <strong className="text-stone-800">Trivedi Marble & Handicraft</strong>
+                <span className="hidden sm:inline text-stone-400"> (Abu Road, Rajasthan)</span>
               </div>
 
               <div className="flex items-center gap-2.5">
@@ -361,7 +455,7 @@ export default function Projects() {
                   href="tel:+919829118822"
                   className="px-4 py-2.5 bg-white border border-stone-300 hover:border-gold text-stone-800 text-xs font-semibold rounded-lg transition-colors flex items-center gap-1.5"
                 >
-                  <span>📞 Call Artisan</span>
+                  <span>📞 Call: +91 98291 18822</span>
                 </a>
                 <a
                   href="#contact"
@@ -377,4 +471,8 @@ export default function Projects() {
       )}
     </section>
   );
+}
+
+function projectLocationClean(loc: string) {
+  return loc;
 }

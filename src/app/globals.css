@@ -202,3 +202,15 @@ body {
     background-position: 0% 0%;
   }
 }
+
+/* === Hide Next.js Dev Indicator / Toast / Bottom Button === */
+nextjs-portal,
+[data-nextjs-toast],
+[data-nextjs-dev-indicator],
+#nextjs-dev-indicator,
+div[data-nextjs-dialog-overlay] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+}

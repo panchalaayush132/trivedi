@@ -2,10 +2,11 @@ import Link from "next/link";
 
 const quickLinks = [
   { href: "#home", label: "Home" },
-  { href: "#about", label: "About Us" },
+  { href: "#about", label: "Heritage" },
+  { href: "#manufacturing", label: "Infrastructure" },
   { href: "#products", label: "Creations" },
   { href: "#projects", label: "Landmark Projects" },
-  { href: "#process", label: "Our Process" },
+  { href: "#recognitions", label: "Recognitions" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -21,14 +22,18 @@ const products = [
 ];
 
 const landmarkProjects = [
+  "84 Columns — Vrindavan",
   "Shri Bhandavpur Jain Tirth",
   "Shri Narendra Bhai Modi House",
   "Tharad Mota Derasar",
+  "Omkareshwar Lotus Installation",
+  "Jamea — Saki Naka, Mumbai",
+  "Sidhpur Gate & Karban Mataji Mandir",
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-stone-950 text-stone-300 border-t border-stone-800">
+    <footer className="bg-stone-950 text-stone-300 border-t border-stone-850">
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-6 py-16 lg:py-20">
         <div className="grid sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
@@ -45,15 +50,14 @@ export default function Footer() {
                   Trivedi Marble
                 </span>
                 <span className="block text-[10px] uppercase tracking-[0.22em] text-gold font-medium">
-                  & Handicraft • Est. 1949
+                  & Handicraft • Est. 1937
                 </span>
               </div>
             </div>
 
             <p className="text-stone-400 text-sm leading-relaxed max-w-sm">
-              Sirohi, Rajasthan&apos;s celebrated stone atelier. Handcrafting sacred
-              Jain tirths, ornate temples, and prestigious residences across India with
-              four generations of devotion and skill.
+              Shaping Stone. Carrying Forward A Legacy. Based in Abu Road, Rajasthan — combining
+              four generations of temple-building mastery with high-precision CNC manufacturing.
             </p>
 
             <div className="pt-2 space-y-2 text-sm text-stone-300">
@@ -73,8 +77,14 @@ export default function Footer() {
                   varun_tmh@yahoo.com
                 </a>
               </p>
+              <p className="flex items-center gap-2">
+                <span className="text-gold">🌐</span>
+                <a href="https://www.trivedimarble.com" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors font-medium text-xs">
+                  www.trivedimarble.com
+                </a>
+              </p>
               <p className="text-xs text-stone-500 pt-1">
-                Leader: Mr. Varun Naresh Trivedi
+                Leadership: Mr. Varun Naresh Trivedi • Design: Ms. Madhuri Trivedi
               </p>
             </div>
           </div>
@@ -84,27 +94,14 @@ export default function Footer() {
             <h4 className="text-white font-[family-name:var(--font-display)] text-base font-bold uppercase tracking-wider mb-4 text-gold-light">
               Landmark Projects
             </h4>
-            <ul className="space-y-2.5">
+            <ul className="space-y-2">
               {landmarkProjects.map((proj) => (
                 <li key={proj}>
                   <a
                     href="#projects"
-                    className="text-stone-400 hover:text-white transition-colors duration-200 text-sm block"
+                    className="text-stone-400 hover:text-white transition-colors duration-200 text-xs sm:text-sm block"
                   >
                     ✦ {proj}
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            <h4 className="text-white font-[family-name:var(--font-display)] text-base font-bold uppercase tracking-wider mt-8 mb-3 text-gold-light">
-              Navigation
-            </h4>
-            <ul className="flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-stone-400">
-              {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <a href={link.href} className="hover:text-gold transition-colors">
-                    {link.label}
                   </a>
                 </li>
               ))}
@@ -128,6 +125,19 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+
+            <h4 className="text-white font-[family-name:var(--font-display)] text-xs font-bold uppercase tracking-wider mt-6 mb-2 text-gold-light">
+              Quick Navigation
+            </h4>
+            <ul className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-stone-400">
+              {quickLinks.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className="hover:text-gold transition-colors">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Workshop Address (2 cols) */}
@@ -143,12 +153,12 @@ export default function Footer() {
             </address>
 
             <a
-              href="https://wa.me/919829118822"
+              href="https://wa.me/919829118822?text=Hello%20Mr.%20Varun%20Trivedi%2C%20I%20would%20like%20to%20inquire%20about%20architectural%20stonework."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-xs text-emerald-400 hover:text-emerald-300 font-medium"
             >
-              <span>WhatsApp Us Directly →</span>
+              <span>WhatsApp Directly →</span>
             </a>
           </div>
         </div>
@@ -161,7 +171,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Trivedi Marble & Handicraft. All rights reserved.
           </p>
           <p>
-            Artisanal Stonework & Marble Carvings • Sirohi, Rajasthan 🇮🇳
+            Since 1937 • Abu Road, Rajasthan, India 🇮🇳
           </p>
         </div>
       </div>
